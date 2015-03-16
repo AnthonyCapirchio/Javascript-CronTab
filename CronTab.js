@@ -81,17 +81,13 @@ function CronTab(){
   return {
     suscribe: function(time, action){
 
-      var splitedTime = time.split(':'),
-          hours       = extractTimeValue(splitedTime[0], 'hours'),
-          minutes     = extractTimeValue(splitedTime[1], 'minutes'),
-          secondes    = extractTimeValue(splitedTime[2], 'secondes');
+      var hours       = extractTimeValue(time[0], 'hours'),
+          minutes     = extractTimeValue(time[1], 'minutes'),
+          secondes    = extractTimeValue(time[2], 'secondes');
 
       for(var i = 0; i < hours.length; i++){
-
         for(var j = 0; j < minutes.length; j++){
-
-          for(var k = 0; k < secondes.length; k++){
-            
+          for(var k = 0; k < secondes.length; k++){  
             var agregedTime = [hours[i], minutes[j], secondes[k]].join(':');
             
             suscribers[agregedTime] = suscribers[agregedTime] || [];
@@ -124,7 +120,9 @@ Cron
   .on('error-log', function(log){
     console.log('new error log: ', log);
   })
-  .suscribe('19:*:*/5', function(){
+  .suscribe(['19', '*', '*/5'], function(){
+    console.log('Go ! ');
+  })
+  .suscribe(['10,12,14,16,18', '*', '*/5'], function(){
     console.log('Go ! ');
   });
-
