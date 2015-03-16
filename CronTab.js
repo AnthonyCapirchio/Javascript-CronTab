@@ -4,7 +4,7 @@ function CronTab(){
   var regex       = {
         digit     : /^[0-9]+$/,
         willcard  : /^\*$/,
-        array     : /^\[[0-9,]+\]$/,
+        array     : /^[0-9,]+$/,
         interval  : /^\*\/[0-9]+$/ 
       },
       logs        = {
