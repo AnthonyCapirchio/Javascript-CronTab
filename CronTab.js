@@ -79,7 +79,7 @@ function CronTab(){
 
 
   return {
-    suscribe: function(time, action){
+    subscribe: function(time, action){
 
       var hours       = extractTimeValue(time[0], 'hours'),
           minutes     = extractTimeValue(time[1], 'minutes'),
@@ -98,7 +98,7 @@ function CronTab(){
 
       return this;
     },
-    unsuscribe: function(time, action){
+    unsubscribe: function(time, action){
       // @TODO
       return this;
     },
@@ -120,9 +120,9 @@ Cron
   .on('error-log', function(log){
     console.log('new error log: ', log);
   })
-  .suscribe(['19', '*', '*/5'], function(){
+  .subscribe(['19', '*', '*/5'], function(){
     console.log('Go ! ');
   })
-  .suscribe(['10,12,14,16,18', '*', '*/5'], function(){
+  .subscribe(['10,12,14,16,18', '*', '*/5'], function(){
     console.log('Go ! ');
   });
