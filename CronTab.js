@@ -17,16 +17,16 @@ function CronTab(){
         }
       },
       listeners   = {},
-      suscribers  = {},
+      subscribers = {},
       cronProcess = function(){
         var date        = new Date(),
             currentTime = date.getHours() + ':' + date.getMinutes() + ':' + (('' + date.getSeconds()).length < 2 ? '0' + date.getSeconds() : date.getSeconds() );
 
-        if(suscribers[currentTime]){
-          for(var action in suscribers[currentTime]){
-            if('function' == typeof suscribers[currentTime][action]){
+        if(subscribers[currentTime]){
+          for(var action in subscribers[currentTime]){
+            if('function' == typeof subscribers[currentTime][action]){
               try{
-                suscribers[currentTime][action]();
+                subscribers[currentTime][action]();
               }
               catch(e){
                 logs.push({
@@ -90,8 +90,8 @@ function CronTab(){
           for(var k = 0; k < secondes.length; k++){  
             var agregedTime = [hours[i], minutes[j], secondes[k]].join(':');
             
-            suscribers[agregedTime] = suscribers[agregedTime] || [];
-            suscribers[agregedTime].push(action);
+            subscribers[agregedTime] = subscribers[agregedTime] || [];
+            subscribers[agregedTime].push(action);
           }
         }
       }
