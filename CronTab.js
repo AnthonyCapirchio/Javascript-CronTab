@@ -109,7 +109,7 @@ function CronTab(){
       return this;
     },
     kill: function(){
-      removeInterval(clock);
+      clearInterval(clock);
     }
   }
 }
